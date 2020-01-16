@@ -5,6 +5,7 @@ import com.javier.ut5.Temporizador;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -15,6 +16,8 @@ public class PantallaPrueba extends Application {
         Temporizador temporizador=new Temporizador();
         temporizador.setFont(new Font (42));
         temporizador.setSegundos(10);
+        temporizador.setColorEncendido(Color.YELLOW);
+        temporizador.setColorFin(Color.BLUE);
 
         temporizador.addOnEndCountdown(new OnEndCountdown() {
             @Override
