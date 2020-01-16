@@ -22,7 +22,7 @@ public class PantallaPrueba extends Application {
                 System.out.println("Fin cuenta atrás");
             }
         });
-        
+
         vBox.getChildren().add(temporizador);
         Scene scene=new Scene(vBox);
         stage.setScene(scene);
