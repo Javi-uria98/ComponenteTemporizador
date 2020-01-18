@@ -18,10 +18,10 @@ public class Temporizador extends Label {
     private StringProperty  textoFinal = new SimpleStringProperty("");
     private ObjectProperty<Paint> colorEncendido= new SimpleObjectProperty<>(Color.GREEN);
     private ObjectProperty<Paint> colorFin= new SimpleObjectProperty<>(Color.RED);
-    private OnEndCountdown endCountdown;
+    private ArrayList<OnEndCountdown> endCountdown;
 
     public Temporizador() {
-        super();
+        endCountdown=new ArrayList<OnEndCountdown>();
     }
 
     public Temporizador(String s) {
@@ -87,7 +87,7 @@ public class Temporizador extends Label {
     }
 
     public void addOnEndCountdown(OnEndCountdown endCountdown) {
-        this.endCountdown=endCountdown;
+        this.endCountdown.add(endCountdown);
     }
 
     public void iniciar() {
@@ -106,8 +106,8 @@ public class Temporizador extends Label {
                             if (segundos.get() == 0) {
                                 setText(textoFinal.get());
                                 setStyle("-fx-text-fill:#"+colorToString(colorFin.get()));
-                                if (endCountdown!=null){
-                                    endCountdown.ejecuta();
+                                for (OnEndCountdown o: endCountdown){
+                                    o.ejecuta();
                                 }
                             }
                         }

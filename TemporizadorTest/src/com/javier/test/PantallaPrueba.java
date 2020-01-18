@@ -27,6 +27,13 @@ public class PantallaPrueba extends Application {
             }
         });
 
+        temporizador.addOnEndCountdown(new OnEndCountdown() {
+            @Override
+            public void ejecuta() {
+                System.out.println("Segundooooo");
+            }
+        });
+
         vBox.getChildren().add(temporizador);
         Scene scene=new Scene(vBox);
         stage.setScene(scene);
