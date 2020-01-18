@@ -2,10 +2,7 @@ package com.javier.ut5;
 
 import com.sun.javafx.css.StyleManager;
 import javafx.application.Platform;
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.*;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
@@ -18,9 +15,9 @@ import java.util.TimerTask;
 public class Temporizador extends Label {
 
     private IntegerProperty segundos = new SimpleIntegerProperty(0);
+    private StringProperty  textoFinal = new SimpleStringProperty("");
     private ObjectProperty<Paint> colorEncendido= new SimpleObjectProperty<>(Color.GREEN);
     private ObjectProperty<Paint> colorFin= new SimpleObjectProperty<>(Color.RED);
-
     private OnEndCountdown endCountdown;
 
     public Temporizador() {
@@ -45,7 +42,19 @@ public class Temporizador extends Label {
 
     public void setSegundos(int segundos) {
         this.segundos.set(segundos);
-        setText(Integer.toString(segundos));
+        //etText(Integer.toString(segundos));
+    }
+
+    public String getTextoFinal() {
+        return textoFinal.get();
+    }
+
+    public StringProperty textoFinalProperty() {
+        return textoFinal;
+    }
+
+    public void setTextoFinal(String textoFinal) {
+        this.textoFinal.set(textoFinal);
     }
 
     public Paint getColorEncendido() {
@@ -95,6 +104,7 @@ public class Temporizador extends Label {
                         public void run() {
                             setText(Integer.toString(segundos.get()));
                             if (segundos.get() == 0) {
+                                setText(textoFinal.get());
                                 setStyle("-fx-text-fill:#"+colorToString(colorFin.get()));
                                 if (endCountdown!=null){
                                     endCountdown.ejecuta();

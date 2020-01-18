@@ -16,6 +16,7 @@ public class PantallaPrueba extends Application {
         Temporizador temporizador=new Temporizador();
         temporizador.setFont(new Font (42));
         temporizador.setSegundos(10);
+        temporizador.setTextoFinal("ACABó");
         temporizador.setColorEncendido(Color.YELLOW);
         temporizador.setColorFin(Color.BLUE);
 
